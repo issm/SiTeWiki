@@ -8,6 +8,12 @@ if ( -d '/home/dotcloud/') {
     $dbpath = File::Spec->catfile($basedir, 'db', 'test.db');
 }
 +{
+    editable => 1,
+
+    basedir => $basedir,
+    datadir => undef,
+
+
     'DBI' => [
         "dbi:SQLite:dbname=$dbpath",
         '',
@@ -16,4 +22,11 @@ if ( -d '/home/dotcloud/') {
             sqlite_unicode => 1,
         }
     ],
+
+    'Text::Xslate' => {
+        syntax => 'Kolon',
+        module => [
+            'Text::Xslate::Bridge::Star',
+        ],
+    },
 };

@@ -1,0 +1,65 @@
+: cascade _base
+
+: around head_additional -> {
+
+<link rel="stylesheet" href="<: uri_for('/static/css/index.css') :>" media="screen" />
+
+<script type="text/javascript">
+var SITEWIKI_URI_BASE = '<: uri_for('/') :>';
+var SITEWIKI_PATH     = '<: $path :>';
+</script>
+<script type="text/javascript" src="<: uri_for('/static/js/index.js') :>" charset="utf-8"></script>
+: }
+
+: around content -> {
+
+<div id="htmlview">
+  <div class="menu menu-top">
+:  if ( c().config.editable ) {
+    <a class="btn button-edit" href="#edit">Edit</a>
+:  }
+  </div>
+
+  <div class="view"></div>
+
+  <div class="menu menu-bottom">
+:  if ( c().config.editable ) {
+    <a class="btn button-edit" href="#edit">Edit</a>
+:  }
+  </div>
+</div>
+
+
+
+<div id="editview">
+    <form action="<: uri_for('/api/save') :>" method="post">
+      <div class="buttons buttons-top">
+        <input type="button" name="cancel" class="btn" value="Cancel" />
+        <input type="button" name="edit" class="btn" value="Edit" />
+        <input type="button" name="preview" class="btn" value="Preview" />
+        <input type="submit" name="save" class="btn primary" value="Save" />
+      </div>
+
+      <div class="editor">
+        <textarea name="data"><: $data :></textarea>
+      </div>
+
+      <div class="previewer"></div>
+
+      <div class="data_orig"></div>
+
+      <div class="buttons buttons-bottom">
+        <input type="button" name="cancel" class="btn" value="Cancel" />
+        <input type="button" name="edit" class="btn" value="Edit" />
+        <input type="button" name="preview" class="btn" value="Preview" />
+        <input type="submit" name="save" class="btn primary" value="Save" />
+      </div>
+    </form>
+  </div>
+</pre>
+
+
+<div class="breadcrumb" id="fileinfo">
+Saved as: <code>$datadir/ <b><: $path :>.textile</b></code>
+</div>
+: }

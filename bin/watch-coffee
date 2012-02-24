@@ -1,0 +1,33 @@
+#!/bin/sh
+TARGET=$1
+
+ROOT=$( cd $(dirname $0)/..  &&  pwd)
+JS_ROOT=$ROOT/static/js
+COFFEE_ROOT=$ROOT/coffee
+
+COFFEE=$(which coffee)
+
+_usage()
+{
+    echo "Usage:"
+    echo "    $0 <target>"
+    exit 1
+}
+
+#if [ ! $TARGET ]; then
+#    _usage
+#fi
+
+if [ ! -d $COFFEE_ROOT/$TARGET ]; then
+    echo "No such coffee directory: $COFFEE_ROOT/$TARGET"
+    exit 1
+fi
+
+if [ ! -d $JS_ROOT/$TARGET ]; then
+    mkdir -p $JS_ROOT/$TARGET
+    echo "js directory has been created: $JS_ROOT/$TARGET"
+fi
+
+COMMAND="$COFFEE -cwo $JS_ROOT/$TARGET $COFFEE_ROOT/$TARGET/**.coffee"
+echo "[32m$COMMAND[0m"
+exec $COMMAND

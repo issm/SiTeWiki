@@ -17,6 +17,11 @@ WriteMakefile(
         'Plack::Session'                  => '0.14',
         'Test::WWW::Mechanize::PSGI'      => '0',
         'Time::Piece'                     => '1.20',
+
+        'Server::Starter'                 => '0.11',
+        'Encode::UTF8Mac'                 => '0.03',
+        'Text::Textile'                   => '2.12',
+        'File::Path'                      => '2.08',
     },
     MIN_PERL_VERSION => '5.008001',
     (-d 'xt' and $ENV{AUTOMATED_TESTING} || $ENV{RELEASE_TESTING}) ? (

@@ -1,0 +1,62 @@
+#htmlview {
+    margin-bottom: 24px;
+    clear: both;
+}
+
+#htmlview .menu {
+    text-align: right;
+}
+#htmlview .menu-top {
+    margin-bottom: 12px;
+}
+#htmlview .menu-bottom {
+    margin-top: 12px;
+}
+
+#htmlview .view {
+    clear: both;
+}
+
+
+
+#editview {
+    clear: both;
+    display: none;
+}
+
+#editview form .buttons {
+    text-align: right;
+}
+#editview form .buttons-top {
+    margin-bottom: 12px;
+}
+#editview form .buttons-bottom {
+    margin-top: 12px;
+}
+
+#editview form .buttons .btn {
+    margin: 0 8px;
+}
+
+#editview .editor textarea {
+    width: 98.5%;
+    height: 40em;
+    font-family: monospace;
+}
+
+
+#editview .previewer {
+    margin: 0 -16px;
+    padding: 12px 16px;
+    background: #f6f6f6;
+}
+
+#editview .data_orig {
+    display: none;
+}
+
+
+
+#fileinfo {
+    margin-top: 24px;
+}
