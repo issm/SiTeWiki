@@ -37,7 +37,7 @@ var SITEWIKI_PATH     = '<: $path :>';
         <input type="button" name="cancel" class="btn" value="Cancel" />
         <input type="button" name="edit" class="btn" value="Edit" />
         <input type="button" name="preview" class="btn" value="Preview" />
-        <input type="submit" name="save" class="btn primary" value="Save" />
+        <input type="submit" name="save" class="btn btn-primary" value="Save" />
       </div>
 
       <div class="editor">
@@ -52,7 +52,7 @@ var SITEWIKI_PATH     = '<: $path :>';
         <input type="button" name="cancel" class="btn" value="Cancel" />
         <input type="button" name="edit" class="btn" value="Edit" />
         <input type="button" name="preview" class="btn" value="Preview" />
-        <input type="submit" name="save" class="btn primary" value="Save" />
+        <input type="submit" name="save" class="btn btn-primary" value="Save" />
       </div>
     </form>
   </div>
