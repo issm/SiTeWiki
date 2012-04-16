@@ -105,8 +105,19 @@ post '/api/save' => sub {
 
 get '/{path:.*}' => sub {
     my ($c, $args) = @_;
-    my $path = Encode::decode_utf8( $args->{path} // '' );
+    my ($datadir, $datafile, $path);
+
+    $path = Encode::decode_utf8( $args->{path} // '' );
     $path = '_default'  if $path eq '';
+
+    $datadir = $c->config->{datadir} // $c->config->{basedir} . '/data';
+
+    $datafile = File::Spec->catfile( $datadir, $path ) . '.textile';
+    $datafile =~ s{/+$}{};
+
+    if ( ! $c->config->{editable}  &&  ! -f _f($datafile) ) {
+        return $c->res_404();
+    }
 
     $c->render('index.tx', {
         path => $path,
