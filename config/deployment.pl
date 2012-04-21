@@ -13,6 +13,10 @@ if ( -d '/home/dotcloud/') {
     basedir => $basedir,
     datadir => undef,
 
+    'Text::Textile::Pluggable' => {
+        plugins => [qw/
+        /],
+    },
 
     'DBI' => [
         "dbi:SQLite:dbname=$dbpath",

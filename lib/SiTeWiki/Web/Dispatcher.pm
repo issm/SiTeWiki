@@ -8,7 +8,7 @@ use File::Spec;
 use File::Path qw/make_path remove_tree/;
 use Encode;
 use Encode::UTF8Mac;
-use Text::Textile qw/textile/;
+use Text::Textile::Pluggable qw/textile/;
 use Text::Xslate qw/mark_raw unmark_raw/;
 use Data::Dumper;
 
@@ -33,7 +33,7 @@ get '/api/load' => sub {
         open my $fh, '<', $_f  or die "$datafile: $!";
         $data = Encode::decode_utf8( <$fh> );
         close $fh;
-        $data_html = _html_filter( textile $data );
+        $data_html = _html_filter( textile( $data, $c->config->{'Text::Textile::Pluggable'}{plugins} ) );
         $status = 200;
     }
     else {
@@ -58,7 +58,7 @@ any '/api/textile' => sub {
     my ($c) = @_;
     my $req = $c->req;
     my $data = Encode::decode_utf8( $req->param('data') // '' );
-    my $data_html = _html_filter( textile $data );
+    my $data_html = _html_filter( textile( $data, $c->config->{'Text::Textile::Pluggable'}{plugins} ) );
 
     $c->render_json({
         data_html => $data_html,
@@ -92,7 +92,7 @@ post '/api/save' => sub {
         close $fh;
     };
 
-    $data_html = _html_filter( textile $data );
+    $data_html = _html_filter( textile( $data, $c->config->{'Text::Textile::Pluggable'}{plugins} ) );
 
     $c->render_json({
         path      => $path,
