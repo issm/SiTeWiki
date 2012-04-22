@@ -15,6 +15,7 @@ if ( -d '/home/dotcloud/') {
 
     'Text::Textile::Pluggable' => {
         plugins => [qw/
+            +SiTeWiki::TextilePlugin::HTMLFilter
         /],
     },
 

@@ -32,7 +32,7 @@ get '/api/load' => sub {
         open my $fh, '<', $_f  or die "$datafile: $!";
         $data = Encode::decode_utf8( <$fh> );
         close $fh;
-        $data_html = _html_filter( $c->textile($data)  );
+        $data_html = $c->textile($data);
         $status = 200;
     }
     else {
@@ -57,7 +57,7 @@ any '/api/textile' => sub {
     my ($c) = @_;
     my $req = $c->req;
     my $data = Encode::decode_utf8( $req->param('data') // '' );
-    my $data_html = _html_filter( $c->textile($data) );
+    my $data_html = $c->textile($data);
 
     $c->render_json({
         data_html => $data_html,
@@ -91,7 +91,7 @@ post '/api/save' => sub {
         close $fh;
     };
 
-    $data_html = _html_filter( $c->textile($data) );
+    $data_html = $c->textile($data);
 
     $c->render_json({
         path      => $path,
@@ -141,13 +141,6 @@ sub _f {
         }
     }
     return $f;
-}
-
-
-sub _html_filter {
-    my ($html) = @_;
-    $html =~ s/\&amp;/&/g;
-    return $html;
 }
 
 
