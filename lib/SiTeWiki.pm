@@ -23,4 +23,14 @@ sub setup_schema {
     }
 }
 
+# setup textile class
+use Text::Textile::Pluggable ();
+{
+    my $textile_conf = __PACKAGE__->config->{'Text::Textile::Pluggable'} || +{};
+    my $textile = Text::Textile::Pluggable->new(
+        plugins => $textile_conf->{plugins} || [],
+    );
+    sub textile { shift; $textile->textile(@_) }
+};
+
 1;
