@@ -20,7 +20,7 @@ WriteMakefile(
 
         'Server::Starter'                 => '0.11',
         'Encode::UTF8Mac'                 => '0.03',
-        'Text::Textile::Pluggable'        => '0.02',
+        'Text::Textile::Pluggable'        => '0.03',
         'File::Path'                      => '2.08',
     },
     MIN_PERL_VERSION => '5.008001',
