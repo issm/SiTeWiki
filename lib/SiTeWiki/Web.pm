@@ -46,7 +46,6 @@ use Text::Xslate;
 
 # load plugins
 __PACKAGE__->load_plugins(
-    'Web::FillInFormLite',
     'Web::CSRFDefender',
     'Web::JSON',
 );
