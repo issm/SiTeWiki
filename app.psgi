@@ -8,15 +8,9 @@ use Plack::Builder;
 
 use SiTeWiki::Web;
 use SiTeWiki;
-use Plack::Session::Store::DBI;
+use Plack::Session::Store::File;
 use Plack::Session::State::Cookie;
-use DBI;
 
-{
-    my $c = SiTeWiki->new();
-    $c->setup_schema();
-}
-my $db_config = SiTeWiki->config->{DBI} || die "Missing configuration for DBI";
 builder {
     enable 'Plack::Middleware::Static',
         path => qr{^(?:/static/)},
@@ -26,11 +20,8 @@ builder {
         root => File::Spec->catdir(dirname(__FILE__), 'static');
     enable 'Plack::Middleware::ReverseProxy';
     enable 'Plack::Middleware::Session',
-        store => Plack::Session::Store::DBI->new(
-            get_dbh => sub {
-                DBI->connect( @$db_config )
-                    or die $DBI::errstr;
-            }
+        store => Plack::Session::Store::File->new(
+            dir => File::Spec->catdir(dirname(__FILE__), 'tmp', 'sessions'),
         ),
         state => Plack::Session::State::Cookie->new(
             httponly => 1,
