@@ -2,9 +2,13 @@ body {
     margin-top: 50px;
 }
 
-header h1.brand a {
-    color: #fff;
-    text-decoration: none;
+header h1 {
+    margin: 0;
+    padding: 0;
+}
+header h1 a.brand {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 footer {
@@ -16,6 +20,23 @@ footer {
         color: black;
         font-weight: bold;
     }
+
+footer .navbar {
+    padding: 10px 0;
+    border-top: 1px solid #d8d8d8;
+    box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, .1);
+    background-color: #e8e8e8;
+    background-image: -webkit-linear-gradient(top, #e8e8e8, #d4d4d4);
+    background-image:    -moz-linear-gradient(top, #e8e8e8, #d4d4d4);
+    background-image:      -o-linear-gradient(top, #e8e8e8, #d4d4d4);
+    background-image:         linear-gradient(top, #e8e8e8, #d4d4d4);
+    background-repeat: repeat-x;
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e8e8e8',endColorstr='#d4d4d4',GradientType=0);
+}
+
+#content {
+    padding-bottom: 40px;
+}
 
 /* smart phones */
 @media screen and (max-device-width: 480px) {
