@@ -67,3 +67,35 @@ footer .navbar .navbar-inner {
         margin-left: 0;
     }
 }
+
+@media (max-width: 567px) {
+    body {
+        margin: 0;
+    }
+
+    .navbar-fixed-top,
+    .navbar-fixed-bottom {
+        position: static;
+    }
+    .navbar-fixed-top {
+        margin-bottom: 10px;
+    }
+    .navbar-fixed-bottom {
+        margin-right: -30px;
+    }
+    .navbar-fixed-top .navbar-inner,
+    .navbar-fixed-bottom .navbar-inner {
+        padding: 0 5px;
+    }
+    .navbar .container {
+        width: auto;
+        padding: 0 10px;
+    }
+    .navbar .brand {
+        padding: 0;
+        margin: 0 10px 0 -5px;
+    }
+}
+
+@media (max-width: 320px) {
+}
